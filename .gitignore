@@ -1,0 +1,14 @@
+# Excluye carpetas de MCUXpresso Workspace
+*.metadata
+*.mcuxpressoide_packages_support
+*.launch
+
+# Excluye carpeta FreeRTOS_TAD_logs
+/FreeRTOS_TAD_logs/
+
+# Excluye carpeta temporal Debug/Release
+/MCUX_FRDM_KL02Z_IoT_RTU_demo/Debug/
+/MCUX_FRDM_KL02Z_IoT_RTU_demo/Release/
+
+# Excluye carpeta html de doxygen
+/MCUX_FRDM_KL02Z_IoT_RTU_demo/doxygen/html/
