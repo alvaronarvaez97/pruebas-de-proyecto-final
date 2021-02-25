@@ -118,6 +118,24 @@ void LED_InitPins(void);
 #define I2C_INITPINS_ACCEL_SDA_PIN_MASK (1U << 4U)      /*!<@brief PORT pin mask */
                                                         /* @} */
 
+/*! @name PORTA8 (number 19), J10[6]/ADC0_SE3/I2C1_SCL
+  @{ */
+
+/* Symbols to be used with PORT driver */
+#define I2C_INITPINS_EXT_SCL_PORT PORTA               /*!<@brief PORT peripheral base pointer */
+#define I2C_INITPINS_EXT_SCL_PIN 8U                   /*!<@brief PORT pin number */
+#define I2C_INITPINS_EXT_SCL_PIN_MASK (1U << 8U)      /*!<@brief PORT pin mask */
+                                                      /* @} */
+
+/*! @name PORTA9 (number 20), J10[5]/ADC0_SE2/I2C1_SDA
+  @{ */
+
+/* Symbols to be used with PORT driver */
+#define I2C_INITPINS_EXT_SDA_PORT PORTA               /*!<@brief PORT peripheral base pointer */
+#define I2C_INITPINS_EXT_SDA_PIN 9U                   /*!<@brief PORT pin number */
+#define I2C_INITPINS_EXT_SDA_PIN_MASK (1U << 9U)      /*!<@brief PORT pin mask */
+                                                      /* @} */
+
 /*!
  * @brief Configures pin routing and optionally pin electrical features.
  *
