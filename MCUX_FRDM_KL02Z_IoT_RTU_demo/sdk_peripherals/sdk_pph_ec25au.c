@@ -60,12 +60,12 @@ const char *ec25_comandos_at[] = {
 	"AT+QCFG=\"band\",0, 800005A,0",                        //configuracion de bandas
 	"AT+CREG?",		                                        //consulta estado de la red celular y tecnología usada en red celular
 	"AT+CMGF=1",	                                        //asigna modo texto para enviar mensajes
-	"AT+CGDCONT=1,\"IP\",\"internet.movistar.com.co\"",     //configuracion de APN
+	"AT+CGDCONT=1,\"IP\",\"web.colombiamovil.com.co\"",     //configuracion de APN
 	"AT+QIACT=1",
 	"AT+QIACT?",
-	"AT+QMTOPEN=0,\"142.93.88.99\",1883",					// direccion ip del servidor
-	"AT+QMTCONN=0,\"LAB1\""	,								// suscripcion a
-	"AT+QMTPUB=0,0,0,0,\"LAB1\"",
+	"AT+QMTOPEN=0,\"54.83.150.17\",1883",					// direccion ip del servidor
+	"AT+QMTCONN=0,\"amq.topic\",\"guest\",\"guest\""	,								// suscripcion a
+	"AT+QMTPUB=0,0,0,0,\"amq.topic\"",
 	"Mensaje", 		//MENSAJE & CTRL+Z
 	"AT+CSQ",		//consulta calidad de la señal RSSI
 	};
