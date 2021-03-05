@@ -35,6 +35,7 @@
 #include "sdk_pph_mma8451Q.h"
 #include "sdk_pph_ec25au.h"
 #include "sdk_pph_sht3x.h"
+#include "sdk_pph_sth31_envio.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -55,8 +56,8 @@
 /*******************************************************************************
  * Private Source Code
  ******************************************************************************/
-void waytTime(void) {
-	uint32_t tiempo = 0xFFFFF;
+void waytTime(uint32_t tiempo) {
+	//uint32_t tiempo = 0xFFFFF;
 	do {
 		tiempo--;
 	} while (tiempo != 0x0000);
@@ -75,6 +76,8 @@ int main(void) {
 	uint8_t sht3x_base_de_tiempo=0;
 	sht3x_data_t sht3x_datos;
 	uint8_t sht3x_detectado=0;
+	uint8_t sht3x_dato_salida=0;
+
 
     BOARD_InitBootPins();
     BOARD_InitBootClocks();
@@ -132,10 +135,9 @@ int main(void) {
 #endif
 
     while(1) {
-    	waytTime();		//base de tiempo fija aproximadamente 200ms
+    	waytTime(1000000);		//base de tiempo fija aproximadamente 200ms
 
-
-#if HABILITAR_SENSOR_SHT3X
+/*#if HABILITAR_SENSOR_SHT3X
     	if(sht3x_detectado==1){
     		sht3x_base_de_tiempo++; //incrementa base de tiempo para tomar dato sensor SHT3X
 			if(sht3x_base_de_tiempo>10){//	>10 equivale aproximadamente a 2s
@@ -156,6 +158,8 @@ int main(void) {
 			}
     	}
 #endif
+*/
+
 
 #if HABILITAR_MODEM_EC25
     	ec25_estado_actual = ec25Polling();	//actualiza maquina de estados encargada de avanzar en el proceso interno del MODEM
@@ -186,7 +190,14 @@ int main(void) {
     		toggleLedAzul();
     		break;
     	}
-    }
 #endif
+		if (ec25_estado_actual==kFSM_RESULTADO_EXITOSO){
+			while(kFSM_RESULTADO_EXITOSO){
+			enviarMQTT_ValueSHT3x();
+			waytTime(4000000);
+			}
+		}
+    }
+
     return 0 ;
 }
